@@ -1,18 +1,23 @@
+# Data Engineering Take Home: ETL off a SQS Queue
 ## To run the program
 
-1. Clone the repo
-2. `cd` into the repo
-3. Install the dependencies using \
+1. Make sure you have [Docker](https://docs.docker.com/get-docker/), [PostgreSQL](https://www.postgresql.org/download/) and [python3](https://www.python.org/downloads/) installed on your machine
+2. Open Docker Desktop, run \
+`docker pull fetchdocker/data-takehome-postgres` and `docker pull fetchdocker/data-takehome-localstack` to pull the required images
+3. Clone the repo using \
+`git clone https://github.com/sabrinali-linyi/fetch-rewards-take-home.git`
+4. `cd` into the repo
+5. Install the dependencies using \
 `pip install -r requirements.txt`
-4. Start the server using `docker-compose up -d`
-5. Run the program using \
+6. Start the server using `docker-compose up -d`
+7. Run the program using \
 `python ETL_pipeline.py --queue_name login-queue --endpoint_url http://localhost:4566/000000000000/ --wait_time_seconds 20` \
 Feel free to customize `wait_time_seconds` as per your requirement.\
 The program will perform all the steps mentioned in the problem statement, including reading from an AWS SQS Queue, transforming that data, and then writing to a Postgres database.
-5. Use the following command to verify the messages are fed into the database table \
+8. Use the following command to verify the messages are fed into the database table \
 `psql -d postgres -U postgres -p 5432 -h localhost -W`\
 `select * from user_logins;`
-6. Use `docker-compose down` to stop the server and remove the containers
+9. Use `docker-compose down` to stop the server and remove the containers
 
 ## Answers to the questions
 
