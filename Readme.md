@@ -4,13 +4,15 @@
 2. `cd` into the repo
 3. Install the dependencies using \
 `pip install -r requirements.txt`
-4. Run the program using \
+4. Start the server using `docker-compose up -d`
+5. Run the program using \
 `python ETL_pipeline.py --queue_name login-queue --endpoint_url http://localhost:4566/000000000000/ --wait_time_seconds 20` \
 Feel free to customize `wait_time_seconds` as per your requirement.\
 The program will perform all the steps mentioned in the problem statement, including reading from an AWS SQS Queue, transforming that data, and then writing to a Postgres database.
 5. Use the following command to verify the messages are fed into the database table \
 `psql -d postgres -U postgres -p 5432 -h localhost -W`\
 `select * from user_logins;`
+6. Use `docker-compose down` to stop the server and remove the containers
 
 ## Answers to the questions
 
